@@ -1,0 +1,235 @@
+/* Import Google Font - Inter for a modern look */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif; /* Applied a modern font */
+    background-color: #f8f9fa; /* Light background for the whole page */
+    color: #343a40; /* Default text color */
+    overflow-x: hidden; /* Prevents horizontal scrollbar during sidebar animation */
+}
+
+/* Header Styles */
+#myHeader {
+    background-color: #009901; /* Your custom header color */
+    color: #ffffff; /* White text for contrast */
+    padding: 15px 20px; /* Consistent padding */
+    position: fixed;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    width: 100%; /* Header spans full width initially */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: margin-left 0.3s ease; /* Smooth transition when sidebar opens/closes */
+}
+
+.header-text {
+    margin: 0 0 0 20px; /* Space between button and text */
+    font-size: 2.2em; /* Larger, more prominent header title */
+    font-weight: 600; /* Slightly bolder */
+    letter-spacing: -0.02em; /* Subtle letter spacing adjustment */
+}
+
+/* Menu Button Styles (Hamburger Icon) */
+#menuButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 25px; /* Height of the button area */
+    width: 30px; /* Width of the button area */
+    z-index: 1001; /* Ensure button is above header content */
+    position: relative; /* For animation */
+}
+
+.bar {
+    width: 100%;
+    height: 3px;
+    background-color: #ffffff; /* White bars for contrast on dark header */
+    margin: 4px 0; /* Space between bars */
+    transition: 0.4s; /* Smooth transition for bar animation */
+    border-radius: 2px;
+}
+
+/* Animation for the Menu Button (Cross icon) */
+.change .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.change .bar:nth-child(2) {
+    opacity: 0; /* Hide middle bar */
+}
+
+.change .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Sidebar Styles */
+.sidenav {
+    height: 100%;
+    width: 0; /* Initially hidden */
+    position: fixed;
+    z-index: 999; /* Below the header, above main content */
+    top: 0;
+    left: 0;
+    background-color: #2c3e50; /* Darker, sophisticated sidebar background */
+    overflow-x: hidden; /* Hide content that overflows horizontally */
+    padding-top: 80px; 
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+    transition: width 0.3s ease; /* Smooth transition for opening/closing */
+}
+
+/* Class added by JavaScript when sidebar is open */
+.sidenav-open {
+    width: 160px; /* Open width */
+}
+
+.sidenav a {
+    padding: 12px 8px 12px 16px; 
+    text-decoration: none;
+    font-size: 1.1em; 
+    color: #ecf0f1; 
+    display: block;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.sidenav a:hover {
+    color: #ffffff; 
+    background-color: #34495e; 
+    border-left: 4px solid #8e44ad; 
+    padding-left: 12px; 
+}
+
+/* Main Content Area */
+.main-content {
+    margin-left: 0; /* No initial margin-left */
+    padding: 100px 30px 30px 30px; 
+    box-sizing: border-box; 
+    min-height: calc(100vh - 100px); 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start; 
+    transition: margin-left 0.3s ease; /* Smooth transition for content shift */
+
+    background-image: url('nature%202.jpg'); /* Your background image */
+    background-size: cover; 
+    background-position: bottom; /* Your background position */
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+}
+
+/* Class added by JavaScript when sidebar is open to shift content and header */
+.content-shifted {
+    margin-left: 160px; /* Shift content by sidebar width */
+}
+
+#myHeader.content-shifted {
+    margin-left: 160px; /* Also shift the header to align with content */
+    width: calc(100% - 160px); /* Adjust header width when shifted */
+}
+
+.main-content h2 {
+    margin-top: 0; 
+    margin-bottom: 25px; 
+    font-size: 2em; 
+    color: #000000; /* Your custom text color */
+    font-weight: 600;
+}
+
+/* Card Styles - Simplified Vertical Box */
+.card-container {
+    display: flex; 
+    flex-direction: column; 
+    max-width: 500px; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    margin: 20px auto; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    background-color: #ffffff; 
+    width: 100%; 
+}
+
+.card-image {
+    width: 100%; 
+    height: 250px; /* Fixed height for the image */
+    overflow: hidden; 
+    border-radius: 8px 8px 0 0; 
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Image will fit within container, showing full image */
+    display: block;
+    margin-top: 10px; /* Your custom margin */
+}
+
+.card-description {
+    padding: 25px; 
+    text-align: left; 
+}
+
+.card-description h3 {
+    margin-top: 0;
+    margin-bottom: 15px; 
+    font-size: 1.6em; 
+    color: #343a40; 
+    font-weight: 600;
+}
+
+.card-description p {
+    line-height: 1.7; 
+    color: #555555; 
+    margin-bottom: 0; 
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    #myHeader {
+        left: 0;
+        width: 100%;
+        padding: 10px 15px;
+        text-align: center;
+        justify-content: center;
+        position: fixed; /* Ensure fixed position on mobile */
+        top: 0;
+    }
+
+    .header-text {
+        font-size: 1.8em;
+        margin-left: 15px; /* Adjust margin for mobile */
+    }
+
+    .sidenav {
+        width: 0; /* Hide sidebar by default on mobile */
+        padding-top: 60px;
+    }
+
+    .main-content {
+        margin-left: 0; /* No margin on mobile if sidebar is hidden */
+        padding-top: 80px;
+        padding-left: 15px;
+        padding-right: 15px;
+        background-attachment: scroll; /* Background can scroll on mobile if fixed causes issues */
+    }
+
+    /* Adjust header and content when sidebar is open on mobile */
+    .sidenav-open {
+        width: 160px;
+    }
+    .content-shifted {
+        margin-left: 160px;
+    }
+    #myHeader.content-shifted {
+        margin-left: 160px;
+        width: calc(100% - 160px);
+    }
+    .card-container {
+        max-width: 100%; /* Cards take full width on smaller screens */
+    }
+}
